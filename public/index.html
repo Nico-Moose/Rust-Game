@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moose Rust: Wasteland</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="page center-page">
+      <section class="card hero-card">
+        <p class="eyebrow">Twitch survival mini app</p>
+        <h1>Moose Rust: Wasteland</h1>
+        <p class="lead">
+          Мрачная survival PvP игра для Twitch-аудитории: фарм, лут, база, риск, прогресс и будущие рейды.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="/auth/twitch">Войти через Twitch</a>
+          <a class="btn ghost" href="/game.html">Открыть игру</a>
+        </div>
+        <div id="auth-status" class="auth-status"></div>
+      </section>
+    </main>
+    <script>
+      fetch('/auth/me')
+        .then((r) => r.json())
+        .then((data) => {
+          const el = document.getElementById('auth-status');
+          if (data.authenticated) {
+            el.innerHTML = `Вход выполнен: <strong>${data.player.display_name}</strong>`;
+          } else {
+            el.textContent = 'Игрок не авторизован';
+          }
+        })
+        .catch(() => {
+          document.getElementById('auth-status').textContent = 'Не удалось проверить авторизацию';
+        });
+    </script>
+  </body>
+</html>
