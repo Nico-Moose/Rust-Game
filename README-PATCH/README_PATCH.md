@@ -1,22 +1,8 @@
-# Rust-Game full ready ZIP
+Moose Rust ready build fix
 
-Добавлены недостающие корневые файлы для запуска на bothost:
-- server.js
-- index.js
-- package.json
-- .env.example
-- .gitignore
+Changed:
+- fixed invalid npm dependency version for passport-twitch-new
+- added missing root files: server.js, index.js, .env.example, .gitignore
+- kept entry point as server.js
 
-Что указывать на хостинге:
-- Язык: Node.js
-- Образ: node:20 Debian Slim
-- Порт: 3000
-- Главный файл: server.js
-- Ветка: main
-
-После загрузки в GitHub:
-1. Скопировать `.env.example` в `.env`
-2. Заполнить Twitch/WizeBot переменные
-3. Выполнить `npm install`
-4. Выполнить `npm run db:init`
-5. Запустить `npm start`
+Upload these files to the repository root and rebuild.
