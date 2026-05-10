@@ -1,21 +1,25 @@
-# MOOSE RUST: WASTELAND
+# Moose Rust: Wasteland — Stage 1 Playable Build
 
-Rust-like survival PvP mini app for Twitch community play.
+Рабочая Stage 1 версия mini-app игры под Twitch.
 
-This repository package contains the initial game design documentation for the project:
-- Full Game Design Document
-- MVP / V2 / V3 roadmap
-- Core systems overview
-- Stage 1 development plan
-- Suggested repository structure
+Что уже реализовано:
+- Twitch OAuth
+- старт игрока с камнем и факелом
+- общий кулдаун добычи 5 минут
+- добыча дерева, камня, серы, металла
+- лут бочек с рандомом
+- охота на животных
+- инвентарь с прочностью инструментов
+- крафт каменной кирки и каменного топора
+- логи действий
+- заглушка под WizeBot gold
 
-## Docs
-- `docs/00-project-vision.md`
-- `docs/01-game-design-document.md`
-- `docs/02-core-systems.md`
-- `docs/03-progression-and-balance.md`
-- `docs/04-stage-1-development-plan.md`
-- `docs/05-github-structure.md`
+## Быстрый старт
+```bash
+npm install
+cp .env.example .env
+npm run db:init
+npm start
+```
 
-## Project fantasy
-A dark, competitive, stream-friendly survival PvP game inspired by Rust, rebuilt for short browser sessions, Twitch login, and WizeBot-connected progression.
+Главная страница игры: `/game.html`

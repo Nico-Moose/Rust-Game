@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS players (
   energy INTEGER NOT NULL DEFAULT 100,
   x INTEGER NOT NULL DEFAULT 12,
   y INTEGER NOT NULL DEFAULT 12,
-  scrap INTEGER NOT NULL DEFAULT 25,
+  scrap INTEGER NOT NULL DEFAULT 0,
   gold_earned_today INTEGER NOT NULL DEFAULT 0,
   last_reward_at TEXT,
   created_at TEXT NOT NULL,
@@ -21,11 +21,13 @@ CREATE TABLE IF NOT EXISTS inventory (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   player_id INTEGER NOT NULL,
   item_code TEXT NOT NULL,
-  quantity INTEGER NOT NULL DEFAULT 0,
+  quantity INTEGER NOT NULL DEFAULT 1,
+  durability INTEGER,
   updated_at TEXT NOT NULL,
-  UNIQUE(player_id, item_code),
   FOREIGN KEY(player_id) REFERENCES players(id) ON DELETE CASCADE
 );
+
+CREATE INDEX IF NOT EXISTS idx_inventory_player_item ON inventory(player_id, item_code);
 
 CREATE TABLE IF NOT EXISTS action_logs (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,5 +45,15 @@ CREATE TABLE IF NOT EXISTS reward_logs (
   reward_amount INTEGER NOT NULL,
   reason TEXT,
   created_at TEXT NOT NULL,
+  FOREIGN KEY(player_id) REFERENCES players(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS cooldowns (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  player_id INTEGER NOT NULL,
+  cooldown_type TEXT NOT NULL,
+  ready_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL,
+  UNIQUE(player_id, cooldown_type),
   FOREIGN KEY(player_id) REFERENCES players(id) ON DELETE CASCADE
 );

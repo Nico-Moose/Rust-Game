@@ -3,15 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Game — Moose Rust: Wasteland</title>
+    <title>Game — Moose Rust: Stage 1</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <main class="page game-page">
+    <main class="page game-page stage-page">
       <header class="topbar card">
         <div>
-          <p class="eyebrow">Survival PvP mini app</p>
-          <h1>Moose Rust: Wasteland</h1>
+          <p class="eyebrow">Rust-like Twitch mini app</p>
+          <h1>Moose Rust — Stage 1</h1>
+          <p class="muted">Камень, факел, бочки, охота, крафт кирки и топора.</p>
         </div>
         <div class="topbar-actions">
           <button class="btn ghost" id="refresh-btn">Обновить</button>
@@ -19,35 +20,53 @@
         </div>
       </header>
 
-      <section class="grid-layout">
-        <section class="card profile-card">
+      <section class="stage-grid">
+        <section class="card side-card">
           <h2>Игрок</h2>
           <div id="player-profile">Загрузка...</div>
-        </section>
-
-        <section class="card map-card">
-          <div class="section-head">
-            <h2>Карта</h2>
-            <button class="btn primary" id="gather-btn">Добыть</button>
+          <div class="cooldown-box">
+            <div class="label">Перезарядка добычи</div>
+            <div id="cooldown-timer" class="cooldown-timer">—</div>
           </div>
-          <div class="controls">
-            <button class="btn" data-move="up">↑</button>
-            <div class="control-row">
-              <button class="btn" data-move="left">←</button>
-              <button class="btn" data-move="down">↓</button>
-              <button class="btn" data-move="right">→</button>
-            </div>
-          </div>
-          <div id="map-grid" class="map-grid"></div>
           <div id="game-message" class="game-message"></div>
         </section>
 
-        <section class="card inventory-card">
-          <h2>Инвентарь</h2>
-          <div id="inventory-list">Загрузка...</div>
+        <section class="card action-card">
+          <div class="tabbar">
+            <button class="btn primary tab-btn active" data-tab="actions">Главная</button>
+            <button class="btn tab-btn" data-tab="inventory">Инвентарь</button>
+            <button class="btn tab-btn" data-tab="craft">Крафт</button>
+          </div>
+
+          <div class="tab-panel active" data-panel="actions">
+            <h2>Добыча</h2>
+            <div class="action-grid">
+              <button class="btn big-btn" data-gather="barrel">Добыть бочку</button>
+              <button class="btn big-btn" data-gather="wood">Добыть дерево</button>
+              <button class="btn big-btn" data-gather="stone">Добыть камень</button>
+              <button class="btn big-btn" data-gather="sulfur">Добыть серу</button>
+              <button class="btn big-btn" data-gather="metal">Добыть металл</button>
+              <button class="btn big-btn" data-gather="hunt">Охота</button>
+            </div>
+            <div class="result-box">
+              <h3>Последнее действие</h3>
+              <div id="last-result">Пока пусто</div>
+            </div>
+          </div>
+
+          <div class="tab-panel" data-panel="inventory">
+            <h2>Инвентарь</h2>
+            <div id="resource-pills" class="resource-pills"></div>
+            <div id="inventory-list">Загрузка...</div>
+          </div>
+
+          <div class="tab-panel" data-panel="craft">
+            <h2>Крафт</h2>
+            <div id="craft-list">Загрузка...</div>
+          </div>
         </section>
 
-        <section class="card logs-card">
+        <section class="card logs-card compact-logs">
           <h2>Логи</h2>
           <div id="logs-list">Загрузка...</div>
         </section>

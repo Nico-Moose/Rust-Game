@@ -1,8 +1,21 @@
-Moose Rust ready build fix
+# README PATCH
 
-Changed:
-- fixed invalid npm dependency version for passport-twitch-new
-- added missing root files: server.js, index.js, .env.example, .gitignore
-- kept entry point as server.js
+Архив содержит уже не только каркас, а рабочую Stage 1 игровую логику.
 
-Upload these files to the repository root and rebuild.
+Добавлено:
+- стартовые инструменты: камень и факел
+- общий 5-минутный кулдаун на добычу
+- 6 кнопок действий: бочка, дерево, камень, сера, металл, охота
+- система лута бочек
+- система случайных животных
+- крафт каменной кирки и каменного топора
+- прочность инструментов и поломка после 10 использований
+- переработанный интерфейс под вкладки Главная / Инвентарь / Крафт
+
+Не реализовано в этом патче:
+- строительство базы
+- PvP
+- рейды
+- хранение лута в доме
+
+Это следующий этап.

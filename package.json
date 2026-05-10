@@ -1,7 +1,7 @@
 {
   "name": "moose-rust-wasteland",
-  "version": "0.1.1",
-  "description": "Twitch-auth survival PvP mini-app starter for Moose Rust: Wasteland",
+  "version": "0.2.0",
+  "description": "Twitch-auth survival PvP mini-app stage 1 with gathering, barrels, hunting and crafting",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
